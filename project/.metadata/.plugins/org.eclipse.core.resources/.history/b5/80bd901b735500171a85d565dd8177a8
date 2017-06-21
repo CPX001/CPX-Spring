@@ -1,0 +1,5 @@
+package com.train.webstore.entity;
+
+public class SysUser {
+
+}

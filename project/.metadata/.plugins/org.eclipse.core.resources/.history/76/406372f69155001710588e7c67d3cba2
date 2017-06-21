@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.train.cpx.dao.ISysUrlDao">
+
+
+	<!-- 1、查询用户左则菜单 -->
+	<select id="selectUserLeftMenu" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+	    SELECT DISTINCT(su.`url_id`),su.`parent_id`,su.`sys_code`,su.`name`,su.`level_id`,su.`url`,su.`order_id`,su.`status`,su.`is_menu`,su.`restful_type`,su.`restful_param`,su.`exist_child`,su.`note`
+		FROM sys_user u,sys_role r,sys_user_role ur,sys_url su,sys_url_role sur
+		WHERE u.`user_id` = ur.`user_id` AND ur.`role_id` = r.`role_id` 
+		AND r.`role_id` = sur.`role_id` AND sur.`url_id` = su.`url_id`
+		AND su.status = 1 AND su.`is_menu` = 1 AND r.status = 1 AND u.status_id = 1
+		AND u.`user_id` = #{userId,jdbcType=INTEGER} order by su.order_id asc
+	</select>
+	<!-- 2、查看所有权限url接口路径  -->
+	<resultMap id="selectAllUrlResult" type="java.util.HashMap">
+		<result column="url" property="url" jdbcType="VARCHAR" />
+	</resultMap>
+	<!-- 所有权限url  -->
+	<select id="selectAllUrl" resultMap="selectAllUrlResult">
+	 	SELECT u.url FROM sys_url u WHERE u.url IS NOT NULL
+	</select>
+	<!-- 3、用户所拥有的菜单权限 -->
+	<select id="selectAuthorityUrl" resultMap="selectAllUrlResult">
+		SELECT DISTINCT(su.`url_id`),su.url
+		FROM sys_user u,sys_role r,sys_user_role ur,sys_url su,sys_url_role sur
+		WHERE u.user_id = ur.user_id AND ur.role_id = r.role_id 
+		AND r.role_id = sur.role_id AND sur.url_id = su.url_id
+		AND url IS NOT NULL AND u.user_id = #{userId,jdbcType=INTEGER}
+	</select>
+	
+	
+	
+</mapper>

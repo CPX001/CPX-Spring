@@ -1,0 +1,7 @@
+db.url= jdbc:MySQL:///springmvcdb?useUnicode=true&characterEncoding=utf8
+
+db.username=root
+
+db.password=root
+
+db.dirverClass= com.mysql.jdbc.Driver

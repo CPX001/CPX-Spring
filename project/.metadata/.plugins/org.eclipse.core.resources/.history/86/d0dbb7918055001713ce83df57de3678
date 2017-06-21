@@ -1,0 +1,17 @@
+package com.train.webstore.util;
+
+import java.io.PrintWriter;
+
+public class StreamCloseUtil {
+	
+	/**
+	 * 关闭PrintWriter的输出流
+	 * @param out
+	 */
+	public static void printWriterClose(PrintWriter out){
+		if(out != null){
+			out.close();
+		}
+	}
+
+}

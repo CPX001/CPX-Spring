@@ -1,0 +1,55 @@
+package com.train.cpx.service.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.train.cpx.dao.ISysUrlDao;
+import com.train.cpx.entity.SysUrl;
+import com.train.cpx.service.ISysUrlService;
+
+public class SysUrlServiceImpl extends BaseServiceImpl<SysUrl, ISysUrlDao> implements ISysUrlService{
+	
+	
+	//左侧菜单分级
+	public List<SysUrl> selectMenu(Integer userId) {
+			
+			List<SysUrl> userLeftMenu = managerDao.selectUserLeftMenu(userId);
+			
+			List<SysUrl> oneMenu = new ArrayList<SysUrl>();
+			List<SysUrl> twoMenu = new ArrayList<SysUrl>();
+			List<SysUrl> threeMenu = new ArrayList<SysUrl>();
+			
+			//循环分开等级菜单和排序
+			for (SysUrl sysUrl : userLeftMenu) {
+				if(sysUrl.getLevelId() == 1){
+					oneMenu.add(sysUrl);
+				}else if(sysUrl.getLevelId() == 2){
+					twoMenu.add(sysUrl);
+				}else if(sysUrl.getLevelId() == 3){
+					threeMenu.add(sysUrl);
+				}
+			}
+			
+			for (SysUrl oneSysUrl : oneMenu) {
+				
+				List<SysUrl> tmpTwoSysUrl = new ArrayList<SysUrl>();
+				for (SysUrl twoSysUrl : twoMenu) {
+					if(oneSysUrl.getUrlId() == twoSysUrl.getParentId()){
+				
+						
+				List<SysUrl> tmpThreeSysUrl = new ArrayList<SysUrl>();
+				for (SysUrl threeSysUrl : threeMenu) {
+					if(twoSysUrl.getUrlId() == threeSysUrl.getParentId()){
+						tmpThreeSysUrl.add(threeSysUrl);
+							}
+						}
+						twoSysUrl.setChildren(tmpThreeSysUrl);
+						tmpTwoSysUrl.add(twoSysUrl);
+					}
+				}
+				oneSysUrl.setChildren(tmpTwoSysUrl);
+			}
+			return oneMenu;
+		}
+
+}

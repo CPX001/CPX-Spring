@@ -1,0 +1,5 @@
+package com.train.cpx.dao;
+
+public interface IBaseDao {
+
+}

@@ -1,0 +1,9 @@
+package com.train.webstore.service;
+
+public interface SysUserService {
+	
+	
+	
+	
+
+}

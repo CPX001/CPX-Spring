@@ -1,0 +1,7 @@
+package com.train.webstore.dao;
+
+import com.train.webstore.entity.SysUser;
+
+public interface ISysUserDao extends IBaseDao<SysUser>{
+
+}

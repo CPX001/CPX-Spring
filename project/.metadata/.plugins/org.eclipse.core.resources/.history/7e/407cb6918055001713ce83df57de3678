@@ -1,0 +1,13 @@
+package com.train.webstore.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.train.webstore.dao.IBaseDao;
+import com.train.webstore.service.IBaseService;
+
+public class BaseServiceImpl<T,M extends IBaseDao<T>> implements IBaseService<T,M> {
+	
+	@Autowired
+	protected M managerDao;
+
+}

@@ -1,0 +1,14 @@
+package com.train.webstore.service.impl;
+
+import com.train.webstore.dao.ISysUserDao;
+import com.train.webstore.entity.SysUser;
+import com.train.webstore.service.ISysUserService;
+
+public class SysUserServiceImpl extends BaseServiceImpl<SysUser,ISysUserDao> implements ISysUserService{
+	
+	
+	public SysUser selectByLogin(String account,String password) {
+		
+		return managerDao.selectByLogin(account,password);
+	}
+}

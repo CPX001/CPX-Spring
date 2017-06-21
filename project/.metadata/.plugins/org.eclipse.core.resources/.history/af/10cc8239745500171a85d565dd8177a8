@@ -1,0 +1,5 @@
+package com.train.webstore.service.impl;
+
+public class SysUserServiceImpl {
+
+}

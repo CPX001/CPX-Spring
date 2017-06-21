@@ -1,0 +1,11 @@
+package com.train.cpx.dao;
+
+import com.train.cpx.entity.SysUser;
+
+
+
+public interface ISysUserDao extends IBaseDao<SysUser>{
+	
+	public SysUser selectByLogin(@Param("account") String account,@Param("password") String password);
+
+}

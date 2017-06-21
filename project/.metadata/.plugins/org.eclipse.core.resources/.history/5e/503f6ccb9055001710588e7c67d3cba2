@@ -1,0 +1,16 @@
+package com.train.cpx.service;
+
+import com.train.cpx.dao.ISysUrlDao;
+import com.train.cpx.entity.SysUrl;
+
+public interface ISysUrlService extends IBaseService<SysUrl, ISysUrlDao>{
+	
+	
+	public final static String MENU = "__menu";
+	public final static String AUTHORITYURL = "__authorityUrl";
+	public final static String ALLURL = "__allUrl";
+	
+	
+	
+
+}

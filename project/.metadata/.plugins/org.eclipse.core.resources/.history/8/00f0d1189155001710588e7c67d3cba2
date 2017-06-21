@@ -1,0 +1,10 @@
+package com.train.cpx.service;
+
+import com.train.cpx.dao.ISysUserDao;
+import com.train.cpx.entity.SysUser;
+
+public interface ISysUserService extends IBaseService<SysUser, ISysUserDao>{
+	
+	public SysUser selectByLogin(String account,String password);
+
+}

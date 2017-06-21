@@ -1,0 +1,7 @@
+package com.train.cpx.service;
+
+import com.train.cpx.entity.SysUser;
+
+public interface ISysUserService extends IBaseService<SysUser, ISysUserDao>{
+
+}

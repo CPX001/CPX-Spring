@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+  http://www.springframework.org/schema/beans/spring-beans-3.1.xsd  
+  http://www.springframework.org/schema/tx 
+  http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+  http://www.springframework.org/schema/context  
+  http://www.springframework.org/schema/context/spring-context-3.1.xsd  
+  http://www.springframework.org/schema/mvc  
+  http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+  
+  <!-- 自动扫描 -->
+  <context:component-scan base-package="com.smart" />
+  
+  <tx:annotation-driven transaction-manager="transactionManager"/>
+	
+  <!-- 引入配置文件 -->
+  <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:jdbc.properties" />
+  </bean>
+
+  <!-- 数据源 -->
+  <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${driver}" />
+		<property name="url" value="${url}" />
+		<property name="username" value="${username}" />
+		<property name="password" value="${password}" />
+		<!-- 初始化连接大小 -->
+		<property name="initialSize" value="${initialSize}"/>
+		<!-- 连接池最大数量 -->
+		<property name="maxActive" value="${maxActive}"/>
+		<!-- 连接池最大空闲 -->
+		<property name="maxIdle" value="${maxIdle}"/>
+		<!-- 连接池最小空闲 -->
+		<property name="minIdle" value="${minIdle}"/>
+		<!-- 获取连接最大等待时间 -->
+		<property name="maxWait" value="${maxWait}"/>
+		<!-- 是否要进行检测 -->
+		<property name="testWhileIdle" value="${testWhileIdle}"/>
+		<!-- 进行检测一个连接是有效的SQL语句 -->
+		<property name="validationQuery" value="${validationQuery}"/>
+		<!-- 是否在数据库连接请求量大的时候，如总数50，当前已请求了49个，所剩不多了，检测那些执行时间久的连接，将其从池中移除掉(移除之后怎么作，由实现决定，如直接断开，或者任其继续执行等) -->
+		<property name="removeAbandoned" value="${removeAbandoned}"/>
+		<!-- 一次数据库操作执行时间超过多少秒的连接被认为是需要移除的 -->
+		<property name="removeAbandonedTimeout" value="${removeAbandonedTimeout}"/>
+		<!-- 每隔多少时间检测一次，比如每半小时检测一次，总不能总是检测，这会对性能产生影响 -->
+		<property name="timeBetweenEvictionRunsMillis" value="${timeBetweenEvictionRunsMillis}"/>
+		<!-- 每次检测时，需要检测多少个数据连接，一般设置为与最大连接数一样，这样就可以检测完所有的连接 -->
+		<property name="numTestsPerEvictionRun" value="${numTestsPerEvictionRun}"/>
+		<!-- 一个数据库连接连接多少时间之外，我们认为其应该不再适用了，应该移除并重新建立连接了 -->
+		<property name="minEvictableIdleTimeMillis" value="${minEvictableIdleTimeMillis}"/>
+   </bean>
+   
+   
+</beans>

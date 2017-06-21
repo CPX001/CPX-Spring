@@ -1,0 +1,5 @@
+package com.train.webstore.service;
+
+public interface IBaseService<T,M extends IBaseDao<T>> {
+
+}

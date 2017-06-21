@@ -1,0 +1,12 @@
+package com.train.webstore.service;
+
+import com.train.webstore.dao.ISysUserDao;
+import com.train.webstore.entity.SysUser;
+
+public interface ISysUserService extends IBaseService<SysUser, ISysUserDao>{
+	
+	
+	
+	public SysUser selectByLogin(String userName,String password);
+
+}

@@ -1,0 +1,5 @@
+package com.train.webstore.controller;
+
+public abstract class BaseController {
+
+}

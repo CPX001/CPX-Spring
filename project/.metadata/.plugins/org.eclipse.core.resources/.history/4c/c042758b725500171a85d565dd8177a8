@@ -1,0 +1,5 @@
+package com.train.webstore.util;
+
+public class MD5KeyUtil {
+
+}

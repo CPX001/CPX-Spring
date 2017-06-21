@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	
+	
+	<!-- 定义个缺省的控制适配器 -->
+	<bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter" />
+	<!-- 获取配置文件 -->
+	<bean id="config"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:jdbc.properties</value>
+			</list>
+		</property>
+	</bean>
+	<!-- 获取数据源 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${db.dirverClass}">
+			
+		</property>
+		<property name="url" value="${db.url}">
+			
+		</property>
+		<property name="username" value="${db.username}">
+			
+		</property>
+		<property name="password" value="${db.password}">
+			
+		</property>
+	</bean>
+	
+	
+	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<value>
+				user.do=userAction
+</value>
+		</property>
+	</bean>
+	
+
+	<!--定义视图 通过internalResourceView来表示 使用的是Servlet/jsp技术-->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass">
+			<value>org.springframework.web.servlet.view.InternalResourceView
+			</value>
+		</property>
+		<!--jsp存放的目录-->
+		<property name="prefix">
+			<value>/</value>
+		</property>
+		<!--jsp文件的后缀-->
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>
+	<bean id="userDao" class="com.cs.springmvc.test1 ">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<!--定义控制器-->
+	<bean id="userAction" class="com.cs.springmvc.UserController">
+		<property name="dao">
+			<ref bean="userDao" />
+		</property>
+		<property name="commandClass">
+			<value>com.cs.springmvc.test1</value>
+		</property>
+		<property name="viewpage">
+			<value>cs</value>
+		</property>
+	</bean>
+</beans>

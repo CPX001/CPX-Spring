@@ -1,0 +1,13 @@
+package com.train.webstore.dao;
+
+import org.jboss.logging.Param;
+
+import com.train.webstore.entity.SysUser;
+
+public interface ISysUserDao extends IBaseDao<SysUser>{
+
+	
+	public SysUser selectByLogin(Map<String,Object> map);
+	
+	
+}

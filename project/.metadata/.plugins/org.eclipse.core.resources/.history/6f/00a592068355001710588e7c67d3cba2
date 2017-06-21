@@ -1,0 +1,11 @@
+package com.train.cpx.service.impl;
+
+import com.train.cpx.dao.IBaseDao;
+import com.train.cpx.service.IBaseService;
+
+public class BaseServiceImpl<T,M extends IBaseDao<T>> implements IBaseService<T,M> {
+	
+	@Autowired
+	protected M managerDao;
+
+}

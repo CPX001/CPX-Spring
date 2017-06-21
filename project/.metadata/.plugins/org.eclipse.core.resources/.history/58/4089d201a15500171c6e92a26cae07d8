@@ -1,0 +1,7 @@
+package com.train.cpx.service;
+
+import com.train.cpx.dao.IBaseDao;
+
+public interface IBaseService<T,M extends IBaseDao<T>> {
+
+}

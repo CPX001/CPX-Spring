@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+  http://www.springframework.org/schema/beans/spring-beans-3.1.xsd  
+  http://www.springframework.org/schema/tx 
+  http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+  http://www.springframework.org/schema/context  
+  http://www.springframework.org/schema/context/spring-context-3.1.xsd  
+  http://www.springframework.org/schema/mvc  
+  http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+	
+	
+	<!--自动扫描,将标注Spring注解的类自动转化Bean，同时完成Bean的注入-->
+	<context:component-scan base-package="com.train.cpx" />
+	
+	<!-- 获取配置文件 -->
+	<bean id="config"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:jdbc.properties</value>
+			</list>
+		</property>
+	</bean>
+	<!-- 获取数据源 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${db.dirverClass}"/>
+		<property name="url" value="${db.url}"/>
+		<property name="username" value="${db.username}"/>
+		<property name="password" value="${db.password}"/>
+	</bean>
+	
+	
+	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<value>
+				user.do=userAction
+</value>
+		</property>
+	</bean>
+	
+
+	<!--定义视图 通过internalResourceView来表示 使用的是Servlet/jsp技术-->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass">
+			<value>org.springframework.web.servlet.view.InternalResourceView
+			</value>
+		</property>
+		<!--jsp存放的目录-->
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<!--jsp文件的后缀-->
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>
+	<bean id="userDao" class="com.cs.springmvc.test1 ">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<!--定义控制器-->
+	<bean id="userAction" class="com.train.cpx.controller.LoginUserController">
+		<property name="dao">
+			<ref bean="userDao" />
+		</property>
+		<property name="commandClass">
+			<value>com.cs.springmvc.test1</value>
+		</property>
+		<property name="viewpage">
+			<value>main</value>
+		</property>
+	</bean>
+</beans>

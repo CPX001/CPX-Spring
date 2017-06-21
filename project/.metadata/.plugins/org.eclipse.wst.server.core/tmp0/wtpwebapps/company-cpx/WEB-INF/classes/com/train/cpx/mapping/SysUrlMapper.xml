@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.train.cpx.dao.ISysUrlDao">
+	<resultMap id="BaseResultMap" type="com.train.cpx.entity.SysUrl">
+		<id column="url_id" property="urlId" jdbcType="INTEGER" />
+		<result column="parent_id" property="parentId" jdbcType="INTEGER" />
+		<result column="sys_code" property="sysCode" jdbcType="VARCHAR" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="level_id" property="levelId" jdbcType="INTEGER" />
+		<result column="url" property="url" jdbcType="VARCHAR" />
+		<result column="order_id" property="orderId" jdbcType="INTEGER" />
+		<result column="status" property="status" jdbcType="INTEGER" />
+		<result column="is_menu" property="isMenu" jdbcType="INTEGER" />
+		<result column="restful_type" property="restfulType" jdbcType="INTEGER" />
+		<result column="restful_param" property="restfulParam"
+			jdbcType="VARCHAR" />
+		<result column="exist_child" property="existChild" jdbcType="INTEGER" />
+		<result column="note" property="note" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		url_id, parent_id, sys_code, name, level_id, url, order_id, status, is_menu,
+		restful_type,
+		restful_param, exist_child, note
+	</sql>
+	
+	
+	
+	
+</mapper>

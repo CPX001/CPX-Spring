@@ -1,0 +1,13 @@
+package com.train.webstore.dao;
+
+import java.util.Map;
+
+import com.train.webstore.entity.SysUser;
+
+public interface ISysUserDao extends IBaseDao<SysUser>{
+
+	
+	public SysUser selectByLogin(Map<String,Object> map);
+	
+	
+}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+  
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:applicationContext.xml</param-value>
+	</context-param>
+
+  <!--配置前端控制器 -->
+	<servlet>
+		<servlet-name>springMvc</servlet-name><!--指定servlet的名称-->
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<!--指定servlet的类名称,这里配置了前端控制器-->
+		
+		<!--用来定义参数,可有多个init-param。在servlet类中通过getInitParamenter(String name)方法访问初始化参数 -->
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:DispatcherServlet-servlet.xml</param-value>
+		</init-param>
+		
+		<!--当值为正数或零时：Servlet容器先加载数值小的servlet，再依次加载其他数值大的servlet.-->
+		<load-on-startup>1</load-on-startup>
+		<async-supported>true</async-supported><!--设置是否启用异步支持-->
+	</servlet>
+	<!--用来定义servlet所对应的URL-->
+	<servlet-mapping>
+		<servlet-name>springMvc</servlet-name>
+		<url-pattern>/</url-pattern><!--指定servlet所对应的URL,此处可以可以配置成*.do，对应struts的后缀习惯-->
+	</servlet-mapping>
+</web-app>

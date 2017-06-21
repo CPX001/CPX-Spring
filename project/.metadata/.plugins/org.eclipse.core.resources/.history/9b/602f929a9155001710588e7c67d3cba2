@@ -1,0 +1,10 @@
+package com.train.cpx.dao;
+
+import com.train.cpx.entity.SysUrl;
+
+public interface ISysUrlDao extends IBaseDao<SysUrl>{
+	
+	
+	
+
+}

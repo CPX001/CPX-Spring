@@ -1,0 +1,5 @@
+package com.train.cpx.service;
+
+public interface ISysUserService {
+
+}

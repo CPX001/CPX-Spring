@@ -1,0 +1,5 @@
+package com.train.cpx.entity;
+
+public class SysRole {
+
+}

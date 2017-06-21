@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="com.train.webstore.util.StreamCloseUtil"/>
+<fullyQualifiedTypeName name="com.train.webstore.util.MD5KeyUtil"/>
+<fullyQualifiedTypeName name="com.train.webstore.dao.IBaseDao"/>
+<fullyQualifiedTypeName name="com.train.webstore.service.IBaseService"/>
+<fullyQualifiedTypeName name="com.train.webstore.entity.SysUser"/>
+<fullyQualifiedTypeName name="com.train.webstore.dao.ISysUserDao"/>
+<fullyQualifiedTypeName name="org.jboss.logging.Param"/>
+<fullyQualifiedTypeName name="com.train.webstore.service.ISysUserService"/>
+<fullyQualifiedTypeName name="com.train.cpx.dao.IBaseDao"/>
+<fullyQualifiedTypeName name="com.train.cpx.service.IBaseService"/>
+<fullyQualifiedTypeName name="com.train.cpx.dao.ISysUserDao"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+<fullyQualifiedTypeName name="com.train.cpx.entity.SysUser"/>
+<fullyQualifiedTypeName name="java.io.IOException"/>
+<fullyQualifiedTypeName name="java.io.PrintWriter"/>
+<fullyQualifiedTypeName name="com.train.cpx.util.StreamCloseUtil"/>
+<fullyQualifiedTypeName name="com.train.cpx.service.ISysUserService"/>
+<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+<fullyQualifiedTypeName name="com.train.cpx.util.MD5KeyUtil"/>
+<fullyQualifiedTypeName name="java.io.Serializable"/>
+<fullyQualifiedTypeName name="com.train.cpx.entity.SysRole"/>
+<fullyQualifiedTypeName name="com.train.cpx.entity.SysUrl"/>
+<fullyQualifiedTypeName name="com.train.cpx.dao.ISysUrlDao"/>
+<fullyQualifiedTypeName name="com.train.cpx.service.ISysUrlService"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMethod"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+</qualifiedTypeNameHistroy>

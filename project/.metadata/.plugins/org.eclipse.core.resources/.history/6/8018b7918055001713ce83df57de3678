@@ -1,0 +1,21 @@
+package com.train.webstore.service.impl;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import com.train.webstore.dao.ISysUserDao;
+import com.train.webstore.entity.SysUser;
+import com.train.webstore.service.ISysUserService;
+
+public class SysUserServiceImpl extends BaseServiceImpl<SysUser,ISysUserDao> implements ISysUserService{
+	
+	
+	public SysUser selectByLogin(String userName,String password) {
+		
+		Map<String,Object> map = new HashMap<String, Object>();
+		map.put("userName", userName);
+		map.put("password", password);
+		
+		return managerDao.selectByLogin(map);
+	}
+}

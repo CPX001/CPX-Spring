@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE generatorConfiguration  
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"  
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">  
+
+<generatorConfiguration>  
+    <classPathEntry location="D:/mysqlDatabase/mysql-connector-java-5.0.8-bin.jar" /> 
+    <context id="DB2Tables"  targetRuntime="MyBatis3">  
+        <commentGenerator>  
+            <property name="suppressDate" value="true"/>  
+            <property name="suppressAllComments" value="true"/>  
+        </commentGenerator>  
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://120.76.193.1:3306/cpx" userId="cpx" password="admincpx"/>  
+        <javaTypeResolver>  
+            <property name="forceBigDecimals" value="false"/>  
+        </javaTypeResolver> 
+        <javaModelGenerator targetPackage="com.train.admin.entity" targetProject="cpx-teachlogy/src/main/java">  
+            <property name="enableSubPackages" value="true"/>  
+            <property name="trimStrings" value="true"/>  
+        </javaModelGenerator>  
+        <sqlMapGenerator targetPackage="com.train.admin.mapping" targetProject="cpx-teachlogy/src/main/java">  
+            <property name="enableSubPackages" value="true"/>  
+        </sqlMapGenerator>  
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.train.admin.dao" targetProject="cpx-teachlogy/src/main/java">  
+            <property name="enableSubPackages" value="true"/>  
+        </javaClientGenerator>
+		<table tableName="wc_location" domainObjectName="WcLocation" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+	</context>  
+</generatorConfiguration>

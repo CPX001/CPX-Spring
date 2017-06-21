@@ -1,0 +1,5 @@
+package com.train.webstore.dao;
+
+public interface IBaseDao {
+
+}

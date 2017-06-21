@@ -1,0 +1,21 @@
+package com.train.cpx.service;
+
+import java.util.List;
+import java.util.Map;
+
+import com.train.cpx.dao.ISysUrlDao;
+import com.train.cpx.entity.SysUrl;
+
+public interface ISysUrlService extends IBaseService<SysUrl, ISysUrlDao>{
+	
+	
+	public final static String MENU = "__menu";
+	public final static String AUTHORITYURL = "__authorityUrl";
+	public final static String ALLURL = "__allUrl";
+	
+	
+	public List<SysUrl> selectMenu(Integer userId);//1、选择菜单展示权限
+	public List<Map<String,String>> selectAllUrl(Integer userId);//2、查看所有权限url
+	public List<Map<String, String>> selectAuthorityUrl(Integer userId);//3、用户所拥有的菜单权限 
+
+}

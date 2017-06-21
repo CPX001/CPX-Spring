@@ -1,0 +1,78 @@
+package com.train.cpx.controller;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.train.cpx.entity.SysUrl;
+import com.train.cpx.entity.SysUser;
+import com.train.cpx.service.ISysUserService;
+import com.train.cpx.util.MD5KeyUtil;
+import com.train.cpx.util.StreamCloseUtil;
+
+@Controller
+public class LoginUserController extends BaseController{
+	
+	@Autowired
+	private ISysUserService iSysUserService;
+	
+	
+		// 用户校验
+		@RequestMapping("LoginDataServlet.do")
+		public void checkLoginData(@RequestParam("userName") String userName,
+				@RequestParam("userPassword") String userPassword,
+				@RequestParam("validateCode") String validateCode,
+				HttpServletRequest request,
+				HttpServletResponse response,
+				HttpSession session){
+			
+			try {
+				out = response.getWriter();
+				
+						//把输入的密码用MD5加密，然后根据用户名和密码查找用户
+						SysUser user = iSysUserService.selectByLogin(userName,MD5KeyUtil.getkeyBeanofStr(userPassword));
+						
+						if(user != null){
+							
+							out.print(SUCCESS);
+						}else{
+							out.print("请输入正确的账号和密码");
+						}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}finally{
+				StreamCloseUtil.printWriterClose(out);
+			}
+		}
+		
+		
+		//用户对应的权限功能列表
+		@RequestMapping("LoginUserServlet")
+		public String toMain(HttpSession session){
+			
+			Integer userId = (Integer)session.getAttribute(ISysUserService.LOGINUSERID);
+			
+			List<SysUrl> menu = iSysUrlService.selectMenu(userId);
+			List<Map<String,String>> allUrl = iSysUrlService.selectAllUrl(userId);
+			List<Map<String,String>> authorityUrl = iSysUrlService.selectAuthorityUrl(userId);
+			
+			// 左则菜单
+			session.setAttribute(ISysUrlService.MENU, menu);
+			// 需要权限控制的菜单
+			session.setAttribute(ISysUrlService.ALLURL, allUrl);
+			// 用户有权限的菜单
+			session.setAttribute(ISysUrlService.AUTHORITYURL, __allUrl);
+			
+			return "main/main";
+		}
+
+}

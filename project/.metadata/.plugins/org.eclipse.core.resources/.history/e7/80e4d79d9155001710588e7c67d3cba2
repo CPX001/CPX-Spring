@@ -1,0 +1,13 @@
+package com.train.cpx.dao;
+
+import com.train.cpx.entity.SysUrl;
+
+public interface ISysUrlDao extends IBaseDao<SysUrl>{
+	
+	
+		//登录进入主界面的菜单展示
+		public List<SysUrl> selectUserLeftMenu(Integer userId);
+		public List<Map<String,String>> selectAllUrl();
+		public List<Map<String, String>> selectAuthorityUrl(Integer userId);
+
+}

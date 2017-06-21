@@ -1,0 +1,13 @@
+package com.train.webstore.controller;
+
+import java.io.PrintWriter;
+
+public abstract class BaseController {
+	
+	
+	protected static final String SUCCESS = "success";
+	protected static final String FAILURE = "failure";
+	
+	protected PrintWriter out = null;
+
+}
